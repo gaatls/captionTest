@@ -1,0 +1,29 @@
+{
+  "name": "captiontest",
+  "version": "1.0.0",
+  "description": "A test of the caption system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaatls/captionTest.git"
+  },
+  "keywords": [
+    "captions",
+    "tls",
+    "asana"
+  ],
+  "author": "Graham Anthony",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaatls/captionTest/issues"
+  },
+  "homepage": "https://github.com/gaatls/captionTest#readme",
+  "dependencies": {
+    "TLSasana": "gaatls/TLSasana",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0"
+  }
+}
