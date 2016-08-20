@@ -2,11 +2,14 @@
  * Created by graham on 8/19/16.
  */
 
+var tlsAsana = require('tls-asana');
+tlsAsana.connect();
 var express = require('express');
 var http = require('http');
 const path = require('path');
 var hbs = require('express-handlebars');
 var app = express();
+require('./routes/routes')(app, tlsAsana);
 let options = {
     dotfiles:'ignore',
     extensions: 'html',
@@ -29,14 +32,6 @@ server.on('listening', onListening);
 
 function onListening() {
     console.log('App listening on port: ' + app.get('port'));
-
-    app.get('/', function (res, req) {
-        res.render('layout');
-    });
-
-    app.get('/test', function(res, req){
-        res.render('test');
-    })
 }
 
 function onError(){
