@@ -10,18 +10,20 @@ const path = require('path');
 var hbs = require('express-handlebars');
 var app = express();
 require('./routes/routes')(app, tlsAsana);
+let debugHelpers = require('./debug/debugHelpers');
 let options = {
     dotfiles:'ignore',
-    extensions: 'html',
+    extensions: ['html', 'css', 'js'],
     index:false
-}
+};
+
+app.use( express.static(path.join(__dirname, 'public'), options) );
 
 let port = 1337;
 
-app.engine('hbs', hbs({extname:'hbs', defaultLayout:'layout', layoutsDir: path.join(__dirname, 'views')}));
+app.engine('hbs', hbs({extname:'hbs', defaultLayout:'layout', layoutsDir: path.join(__dirname, 'views'), helpers:debugHelpers.HBSDebugHelpers}) );
 app.set('port', port);
 app.set('view engine', 'hbs');
-app.use( express.static(path.join(__dirname, 'public'), options) );
 
 var server = http.createServer(app);
 

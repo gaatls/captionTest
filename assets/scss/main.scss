@@ -1,0 +1,22 @@
+@import './libs/font_variables';
+
+$color1:#3A6572;
+$color2:#283D41;
+$color3:#C3D5D8;
+$color4:#D93A15;
+$color5:#710909;
+$background:#eee;
+
+
+body{
+  background-color:$background;
+  font-family:$helvetica-font-stack;
+}
+
+header{
+  color:$color2;
+}
+
+header h1{
+  font-size:28pt;
+}

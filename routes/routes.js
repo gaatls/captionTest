@@ -10,8 +10,10 @@ module.exports = function(app, tlsAsana){
     });
 
     app.get('/status', function(req, res){
-        res.render('status', tlsAsana.getUnassigned().then(function(list){
-            return list;
-        }));
+        res.render('layouts/status',
+            tlsAsana.getUnassigned().then(function(list){
+                return {unassignedList:list};
+            })
+        );
     });
-}
+};
