@@ -2,13 +2,13 @@
  * Created by graham on 8/19/16.
  */
 
-var tlsAsana = require('tls-asana');
+let tlsAsana = require('tls-asana');
 tlsAsana.connect();
-var express = require('express');
-var http = require('http');
+let express = require('express');
+let http = require('http');
 const path = require('path');
-var hbs = require('express-handlebars');
-var app = express();
+let hbs = require('express-handlebars');
+let app = express();
 require('./routes/routes')(app, tlsAsana);
 let debugHelpers = require('./debug/debugHelpers');
 let options = {
@@ -25,12 +25,13 @@ app.engine('hbs', hbs({extname:'hbs', defaultLayout:'layout', layoutsDir: path.j
 app.set('port', port);
 app.set('view engine', 'hbs');
 
-var server = http.createServer(app);
-
+let server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+//Deal with the socket.io dependencies that exist
+let io=require('./lib/sockets').listen(server, tlsAsana);
 
 function onListening() {
     console.log('App listening on port: ' + app.get('port'));
