@@ -20,3 +20,19 @@ header{
 header h1{
   font-size:28pt;
 }
+
+.task{
+  border-bottom: 1px solid $color4;
+  height:45px;
+}
+
+.task:hover{
+  background-color: $color1;
+  color:$background;
+}
+
+.task h2{
+  margin:0px;
+  position:relative;
+  top:15px;
+}

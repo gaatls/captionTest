@@ -31,7 +31,7 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 //Deal with the socket.io dependencies that exist
-let io=require('./lib/sockets').listen(server, tlsAsana);
+require('./lib/sockets').listen(server, tlsAsana);
 
 function onListening() {
     console.log('App listening on port: ' + app.get('port'));
