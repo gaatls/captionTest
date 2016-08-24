@@ -4,21 +4,24 @@ body {
 
 header {
   color: #283D41; }
-
-header h1 {
-  font-size: 28pt; }
+  header h1 {
+    font-size: 28pt; }
 
 .task {
   border-bottom: 1px solid #D93A15;
   height: 45px; }
-
-.task:hover {
-  background-color: #3A6572;
-  color: #eee; }
-
-.task h2 {
-  margin: 0px;
-  position: relative;
-  top: 15px; }
+  .task h2 {
+    margin: 0px;
+    position: relative;
+    top: 15px; }
+  .task:hover {
+    background-color: #3A6572;
+    color: #eee; }
+  .task .contentInfo {
+    width: 50%;
+    opacity: 0.0;
+    transition: opacity 5s; }
+  .task .contentInfo.visible {
+    opacity: 1.0; }
 
 /*# sourceMappingURL=main.css.map */

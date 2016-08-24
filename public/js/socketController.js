@@ -2,13 +2,22 @@
  * Created by graham on 8/21/16.
  */
 
-var socket = io();
+var serverURL = 'http://localhost:1337'
+var socket = io().connect(serverURL);
 
 socket.on('connection', function(socket){
-   console.log('connected!');
+   console.log(socket);
 });
 
 socket.on('unassigned', function(data){
     layoutHelpers.addToPage(data);
 });
 
+socket.on('taskInfo', function(data){
+    console.log(data);
+    layoutHelpers.placeContent(data);
+});
+
+function sendMessage(eventName, data){
+    socket.emit(eventName, data);
+}

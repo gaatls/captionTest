@@ -20,7 +20,6 @@ let options = {
 app.use( express.static(path.join(__dirname, 'public'), options) );
 
 let port = 1337;
-
 app.engine('hbs', hbs({extname:'hbs', defaultLayout:'layout', layoutsDir: path.join(__dirname, 'views'), helpers:debugHelpers.HBSDebugHelpers}) );
 app.set('port', port);
 app.set('view engine', 'hbs');
@@ -31,7 +30,8 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 //Deal with the socket.io dependencies that exist
-require('./lib/sockets').listen(server, tlsAsana);
+let socketLib = require('./lib/sockets');
+socketLib.listen(server, tlsAsana);
 
 function onListening() {
     console.log('App listening on port: ' + app.get('port'));

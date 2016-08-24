@@ -15,24 +15,35 @@ body{
 
 header{
   color:$color2;
-}
 
-header h1{
-  font-size:28pt;
+  h1{
+    font-size:28pt;
+  }
 }
 
 .task{
   border-bottom: 1px solid $color4;
   height:45px;
+
+  h2{
+    margin:0px;
+    position:relative;
+    top:15px;
+  }
+
+  &:hover{
+    background-color: $color1;
+    color:$background;
+  }
+
+  .contentInfo{
+    width:50%;
+    opacity:0.0;
+    transition: opacity 5s;
+  }
+
+  .contentInfo.visible{
+    opacity:1.0;
+  }
 }
 
-.task:hover{
-  background-color: $color1;
-  color:$background;
-}
-
-.task h2{
-  margin:0px;
-  position:relative;
-  top:15px;
-}
