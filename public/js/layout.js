@@ -19,9 +19,7 @@ var layoutHelpers = {
                 let tempDiv = document.createElement('div');
                 tempDiv.className="task";
                 tempDiv.setAttribute('id', data[i].id);
-                let temph2 = document.createElement('h2');
-                temph2.appendChild(document.createTextNode(data[i].name));
-                tempDiv.appendChild(temph2);
+                tempDiv.appendChild(this.createHeader(data[i].name));
                 let contentDiv = document.createElement('div');
                 contentDiv.className="content";
                 tempDiv.appendChild(contentDiv);
@@ -29,6 +27,22 @@ var layoutHelpers = {
                 document.getElementsByTagName('body')[0].appendChild(tempDiv);
             }
         }
+    },
+
+    /**
+     * Creates the header row for the task including mouseover behavior, title placement, etc.
+     *
+     * @param taskName {String} The name for this header
+     */
+    createHeader : function(taskName){
+        let headerDiv = document.createElement('div');
+        headerDiv.className = "headerDiv";
+        let temph2 = document.createElement('h2');
+        temph2.className = "contentTitle";
+        temph2.appendChild(document.createTextNode(taskName));
+        headerDiv.appendChild(temph2);
+        return headerDiv;
+
     },
 
     /**
@@ -65,20 +79,51 @@ var layoutHelpers = {
      * @param data {Object} An Object representing all of the information about this task
      */
     placeContent : function(data){
+        console.dir(data);
         var tempDiv = document.createElement('div');
         tempDiv.className = "contentInfo";
         var home = document.getElementById(data.id);
         home.getElementsByClassName('content')[0].appendChild(tempDiv);
 
-        var created = document.createElement('h2');
-        created.appendChild( document.createTextNode("Creation: " + data.created_at) );
-        tempDiv.appendChild(created);
-
-        var due = document.createElement('h2');
-        due.appendChild( document.createTextNode("Due Date: " + data.due_at) );
-        tempDiv.appendChild(due);
+        if(data.created_at) {
+            tempDiv.appendChild(this.createContentPiece(false, 'Creation: ', data.created_at));
+        }
+        if(data.due_at !== null) {
+            tempDiv.appendChild(this.createContentPiece(false, 'Due Date: ', data.due_at));
+        }
+        if(data.notes !== null){
+            tempDiv.appendChild(this.createContentPiece(true, 'Notes:'));
+            var pele = document.createElement('p');
+            pele.appendChild(document.createTextNode(data.notes));
+            tempDiv.appendChild(pele);
+        }
 
         tempDiv.classList.add('visible');
+    },
+
+    /**
+     * Creates the title and value in a way that can be easily styled with CSS. This should be used to create all
+     * of the pieces of information for the front end that are drawn in from Asana
+     *
+     * @param titleOnly {boolean} If true this will only generate and return an appropriately formatted title, otherwise
+     *        it will generate a title and some information after the title
+     * @param title {string} The title that will be displayed next to this content piece
+     * @param [data] {string} The data that  will be displayed next to the title
+     */
+
+    createContentPiece : function(titleOnly, title, data){
+        data = (typeof(data) === 'undefined') ? undefined : data;
+
+        var retEle = document.createElement('h2');
+        var titleStyle = document.createElement('span');
+        titleStyle.className = "heading";
+        titleStyle.appendChild(document.createTextNode(title));
+        retEle.appendChild(titleStyle);
+
+        if(data !== undefined) {
+            retEle.appendChild(document.createTextNode(data));
+        }
+        return retEle;
     }
 
 };

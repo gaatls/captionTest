@@ -1,11 +1,13 @@
 @import './libs/font_variables';
 
-$color1:#3A6572;
-$color2:#283D41;
+$color1:#06608A;
+$color2:#363636;
 $color3:#C3D5D8;
-$color4:#D93A15;
-$color5:#710909;
+$color4:#CCCCCC;
+$color5:#ffffff;
 $background:#eee;
+
+$collapsed:45px;
 
 
 body{
@@ -23,27 +25,48 @@ header{
 
 .task{
   border-bottom: 1px solid $color4;
-  height:45px;
+  height:$collapsed;
+  position:relative;
 
-  h2{
-    margin:0px;
-    position:relative;
-    top:15px;
-  }
+  .headerDiv{
+    height:$collapsed;
 
-  &:hover{
-    background-color: $color1;
-    color:$background;
+    &:hover{
+      background-color: $color1;
+      color:$background;
+    }
+
+    .contentTitle{
+      margin-top:0;
+      margin-bottom:0;
+      margin-left:1.5%;
+      position:relative;
+      top:8px;
+    }
   }
 
   .contentInfo{
-    width:50%;
+    position:absolute;
+    bottom:0;
+    width:47%;
     opacity:0.0;
     transition: opacity 5s;
+    height:530px;
+    overflow:hidden;
+    margin-top: 0;
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-bottom: 0;
+    padding:10px;
+
+    &.visible{
+      opacity:1.0;
+      border-right:1px solid $color4;
+      border-top:1px solid $color4;
+      border-left:1px solid $color4;
+      background-color:$color5;
+    }
   }
 
-  .contentInfo.visible{
-    opacity:1.0;
-  }
 }
 

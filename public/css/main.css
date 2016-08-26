@@ -3,25 +3,43 @@ body {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif; }
 
 header {
-  color: #283D41; }
+  color: #363636; }
   header h1 {
     font-size: 28pt; }
 
 .task {
-  border-bottom: 1px solid #D93A15;
-  height: 45px; }
-  .task h2 {
-    margin: 0px;
-    position: relative;
-    top: 15px; }
-  .task:hover {
-    background-color: #3A6572;
-    color: #eee; }
+  border-bottom: 1px solid #CCCCCC;
+  height: 45px;
+  position: relative; }
+  .task .headerDiv {
+    height: 45px; }
+    .task .headerDiv:hover {
+      background-color: #06608A;
+      color: #eee; }
+    .task .headerDiv .contentTitle {
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 1.5%;
+      position: relative;
+      top: 8px; }
   .task .contentInfo {
-    width: 50%;
+    position: absolute;
+    bottom: 0;
+    width: 47%;
     opacity: 0.0;
-    transition: opacity 5s; }
-  .task .contentInfo.visible {
-    opacity: 1.0; }
+    transition: opacity 5s;
+    height: 530px;
+    overflow: hidden;
+    margin-top: 0;
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-bottom: 0;
+    padding: 10px; }
+    .task .contentInfo.visible {
+      opacity: 1.0;
+      border-right: 1px solid #CCCCCC;
+      border-top: 1px solid #CCCCCC;
+      border-left: 1px solid #CCCCCC;
+      background-color: #ffffff; }
 
 /*# sourceMappingURL=main.css.map */
