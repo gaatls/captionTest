@@ -65,7 +65,7 @@ var layoutHelpers = {
     collapseView : function(classArray){
         for(var i=0; i<classArray.length; i++){
             if(classArray[i].style.height == layoutHelpers.expandHeight){
-                $('#'+classArray[i].id+ '>.content').fadeOut(400, function(){
+                $('#'+classArray[i].id+ '>.content, #' + classArray[i].id+' iframe').fadeOut(400, function(){
                     $(this).html('');
                 });
                 $('#'+classArray[i].id).animate({height:layoutHelpers.collapseHeight});
@@ -98,6 +98,9 @@ var layoutHelpers = {
             tempDiv.appendChild(pele);
         }
 
+        home.appendChild( this.placeVideo(data) );
+
+
         tempDiv.classList.add('visible');
     },
 
@@ -124,6 +127,19 @@ var layoutHelpers = {
             retEle.appendChild(document.createTextNode(data));
         }
         return retEle;
+    },
+
+    placeVideo : function(data){
+        data = (typeof(data) === 'undefined') ? undefined : data;
+
+        var iFrame = document.createElement('iframe');
+        iFrame.setAttribute('width', "560");
+        iFrame.setAttribute('height', '315');
+        iFrame.setAttribute('src', 'https://www.youtube.com/embed/s1JsBhRCRH0');
+        iFrame.setAttribute('frameborder', '0');
+        iFrame.setAttribute('allowfullscreen', 'true');
+
+        return iFrame;
     }
 
 };

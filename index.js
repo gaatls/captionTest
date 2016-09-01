@@ -2,14 +2,13 @@
  * Created by graham on 8/19/16.
  */
 
-let tlsAsana = require('tls-asana');
-tlsAsana.connect();
+
 let express = require('express');
 let http = require('http');
 const path = require('path');
 let hbs = require('express-handlebars');
 let app = express();
-require('./routes/routes')(app, tlsAsana);
+
 let debugHelpers = require('./debug/debugHelpers');
 let options = {
     dotfiles:'ignore',
@@ -30,8 +29,19 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 //Deal with the socket.io dependencies that exist
-let socketLib = require('./lib/sockets');
-socketLib.listen(server, tlsAsana);
+
+let tlsAsana = require('tls-asana');
+tlsAsana.connect(166216691534199).then(function(status){
+    if(status){
+        let socketLib = require('./lib/sockets');
+        socketLib.listen(server, tlsAsana);
+        require('./routes/routes')(app, tlsAsana);
+        console.log('Asana Connected and setup');
+    }
+});
+
+
+
 
 function onListening() {
     console.log('App listening on port: ' + app.get('port'));
