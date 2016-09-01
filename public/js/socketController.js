@@ -16,6 +16,7 @@ socket.on('unassigned', function(data){
 socket.on('taskInfo', function(data){
     console.log(data);
     layoutHelpers.placeContent(data);
+    layoutHelpers.placeVideo(data);
 });
 
 function sendMessage(eventName, data){

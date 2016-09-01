@@ -23,7 +23,7 @@ header {
       position: relative;
       top: 8px; }
   .task .contentInfo {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 47%;
     opacity: 0.0;
@@ -31,15 +31,20 @@ header {
     height: 530px;
     overflow: hidden;
     margin-top: 0;
-    margin-right: 1%;
-    margin-left: 1%;
+    margin-right: 1.5%;
+    margin-left: 1.5%;
     margin-bottom: 0;
-    padding: 10px; }
+    padding: 10px;
+    float: left; }
     .task .contentInfo.visible {
       opacity: 1.0;
       border-right: 1px solid #CCCCCC;
       border-top: 1px solid #CCCCCC;
       border-left: 1px solid #CCCCCC;
       background-color: #ffffff; }
+  .task iframe {
+    float: left;
+    margin-left: 1.5%;
+    margin-top: 25px; }
 
 /*# sourceMappingURL=main.css.map */
