@@ -9,7 +9,7 @@ const path = require('path');
 let hbs = require('express-handlebars');
 let app = express();
 
-let debugHelpers = require('./debug/debugHelpers');
+//let debugHelpers = require('./debug/debugHelpers');
 let options = {
     dotfiles:'ignore',
     extensions: ['html', 'css', 'js'],
@@ -19,7 +19,7 @@ let options = {
 app.use( express.static(path.join(__dirname, 'public'), options) );
 
 let port = 1337;
-app.engine('hbs', hbs({extname:'hbs', defaultLayout:'layout', layoutsDir: path.join(__dirname, 'views'), helpers:debugHelpers.HBSDebugHelpers}) );
+app.engine('hbs', hbs({extname:'hbs', defaultLayout:'layout', layoutsDir: path.join(__dirname, 'views')}) );
 app.set('port', port);
 app.set('view engine', 'hbs');
 
