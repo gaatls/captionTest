@@ -1,7 +1,7 @@
 /**
  * Created by graham on 8/19/16.
  */
-
+'use strict';
 
 let express = require('express');
 let http = require('http');
